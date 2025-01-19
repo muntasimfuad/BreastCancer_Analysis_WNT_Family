@@ -11,7 +11,7 @@ library(writexl)
 # ...................WNT2............................
 
 # load drug sensitivity data (ctrp)
-ctrp_wnt2 <- read_xlsx("data/WNT2/WNT2_CTRP.xlsx")
+ctrp_wnt2 <- read_xlsx("Drug sensitivity analysis/data/WNT2/WNT2_CTRP.xlsx")
 
 
 # Filter data
@@ -20,7 +20,7 @@ wnt2_ctrp_neg <- ctrp_wnt2 |> filter(fdr < 0.05) |>
 
 # Export top 20 CTRP
 write_xlsx(wnt2_ctrp_neg,
-           path = "outputs/CTRP/Top 20 CTRP drug sensitivity & WNT2 Expression.xlsx")
+           path = "Drug sensitivity analysis/outputs/CTRP/Top 20 CTRP drug sensitivity & WNT2 Expression.xlsx")
 
 # Create the lollipop chart
 ctrp_plot2 <- ggplot(wnt2_ctrp_neg, 
@@ -42,7 +42,7 @@ ctrp_plot2 <- ggplot(wnt2_ctrp_neg,
        y = "") +
   theme_bw() + theme(plot.title = element_text(size = 10))
 
-ggsave(filename = "figures/WNT2/CTRP.png",
+ggsave(filename = "Drug sensitivity analysis/figures/WNT2/CTRP.png",
        plot = ctrp_plot2,
        width = 6, height = 7,
        dpi = 300)
@@ -50,7 +50,7 @@ ggsave(filename = "figures/WNT2/CTRP.png",
 
 
 # load drug sensitivity data (gdsc)
-gdsc_wnt2 <- read_xlsx("data/WNT2/WNT2_GDSC.xlsx")
+gdsc_wnt2 <- read_xlsx("Drug sensitivity analysis/data/WNT2/WNT2_GDSC.xlsx")
 
 
 # Filter data
@@ -63,7 +63,7 @@ wnt2_gdsc_pos <- gdsc_wnt2 |> filter(fdr < 0.1) |>
 wnt2_gdsc <- bind_rows(wnt2_gdsc_pos, wnt2_gdsc_neg)
 
 # Export top 20 CTRP
-write_xlsx(wnt2_gdsc,path = "outputs/GDSC/Top 20 GDSC drug sensitivity & WNT2 Expression.xlsx")
+write_xlsx(wnt2_gdsc,path = "Drug sensitivity analysis/outputs/GDSC/Top 20 GDSC drug sensitivity & WNT2 Expression.xlsx")
 
 # Create the lollipop chart
 gdsc_plot2 <- ggplot(wnt2_gdsc, 
@@ -85,7 +85,7 @@ gdsc_plot2 <- ggplot(wnt2_gdsc,
        y = "") +
   theme_bw() + theme(plot.title = element_text(size = 10))
 
-ggsave(filename = "figures/WNT2/GDSC.png",
+ggsave(filename = "Drug sensitivity analysis/figures/WNT2/GDSC.png",
        plot = gdsc_plot2,
        width = 6, height = 7,
        dpi = 300)
