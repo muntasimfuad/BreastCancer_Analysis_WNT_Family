@@ -6,20 +6,20 @@ library(tidyverse)
 library(cowplot)
 
 # Load gene effect data
-wnt2 <- read.csv("Cell line data analysis/data/WNT2 Gene Effect.csv")
-wnt7b <- read.csv("Cell line data analysis/data/WNT7B Gene Effect.csv")
-wnt11 <- read.csv("Cell line data analysis/data/WNT11 Gene Effect.csv")
+wnt2 <- read.csv("Cell line data analysis/data/WNT2.csv")
+wnt7b <- read.csv("Cell line data analysis/data/WNT7B.csv")
+wnt11 <- read.csv("Cell line data analysis/data/WNT11.csv")
 
 
 # .........................WNT2.......................................
 # Categorize the gene effect scores as Negative or Positive
-wnt2$Gene.Effect.Category <- ifelse(wnt2$WNT2.Gene.Effect..Chronos. < 0, 
+wnt2$Gene.effect <- ifelse(wnt2$Gene.effect.score < 0, 
                                      "negative", "positive")
 
 # Create bar plot
-wnt2_plot <- ggplot(wnt2, aes(x = Cell.Line.Name, 
-                                y = WNT2.Gene.Effect..Chronos.,
-                                fill = Gene.Effect.Category)) +
+wnt2_plot <- ggplot(wnt2, aes(x = Category, 
+                                y = Gene.effect.score,
+                                fill = Gene.effect)) +
   geom_bar(stat = "identity", width=0.2) + 
   theme_minimal() +
   labs(title = "Gene Effect Score for WNT2 in Breast Cancer Cell Lines",
@@ -49,17 +49,16 @@ ggsave(filename = "Cell line data analysis/figures/WNT2.png",
        units = "in",
        dpi = 300)
 
-
 # .........................WNT7B.......................................
 
 # Categorize the gene effect scores as Negative or Positive
-wnt7b$Gene.Effect.Category <- ifelse(wnt7b$WNT7B.Gene.Effect..Chronos. < 0, 
+wnt7b$Gene.effect <- ifelse(wnt7b$Gene.effect.score < 0, 
                                      "negative", "positive")
 
 # Create bar plot
-wnt7b_plot <- ggplot(wnt7b, aes(x = Cell.Line.Name, 
-                                y = WNT7B.Gene.Effect..Chronos.,
-                                fill = Gene.Effect.Category)) +
+wnt7b_plot <- ggplot(wnt7b, aes(x = Category, 
+                                  y = Gene.effect.score,
+                                fill = Gene.effect)) +
   geom_bar(stat = "identity", width=0.2) + 
   theme_minimal() +
   labs(title = "Gene Effect Score for WNT7B in Breast Cancer Cell Lines",
@@ -94,13 +93,13 @@ ggsave(filename = "Cell line data analysis/figures/WNT7B.png",
 # .........................WNT11.......................................
 
 # Categorize the gene effect scores as Negative or Positive
-wnt11$Gene.Effect.Category <- ifelse(wnt11$WNT11.Gene.Effect..Chronos. < 0, 
+wnt11$Gene.effect <- ifelse(wnt11$Gene.effect.score < 0, 
                                      "negative", "positive")
 
 # Create bar plot
-wnt11_plot <- ggplot(wnt11, aes(x = Cell.Line.Name, 
-                                y = WNT11.Gene.Effect..Chronos.,
-                                fill = Gene.Effect.Category)) +
+wnt11_plot <- ggplot(wnt11, aes(x = Category, 
+                                y = Gene.effect.score,
+                                fill = Gene.effect)) +
   geom_bar(stat = "identity", width=0.2) + 
   theme_minimal() +
   labs(title = "Gene Effect Score for WNT11 in Breast Cancer Cell Lines",

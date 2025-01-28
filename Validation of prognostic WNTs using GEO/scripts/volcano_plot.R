@@ -31,11 +31,9 @@ volcano <- EnhancedVolcano(degenes,
                            cutoffLineType = "dashed",
                            border = "partial")
 
-
 # Export volcano plot
 ggsave(filename = ("Validation of prognostic WNTs using GEO/figures/vocano.png"), 
        plot = volcano, 
        width = 8.5, 
        height = 8, 
        dpi = 300)
-
