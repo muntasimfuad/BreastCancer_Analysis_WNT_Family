@@ -1,4 +1,4 @@
-# Chemokine receptors
+# Cancer Cell Line Analysis
 # Author: Muntasim Fuad
 
 # Install required packages
